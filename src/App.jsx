@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Pool from 'pg';
 
-const DATABASE_URL='postgresql://postgres:password@10.0.2.4:5432/postgres';
+const DATABASE_URL='postgresql://postgres:password@hw02postgresql.postgres.database.azure.com:5432/postgres';
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
