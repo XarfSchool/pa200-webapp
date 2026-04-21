@@ -62,4 +62,5 @@ jobs:
           app-name: 'hw02-webapp'
           slot-name: 'Production'
           package: .
-          
+        run: |
+          npm run dev
