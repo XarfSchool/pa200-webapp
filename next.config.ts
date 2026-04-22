@@ -1,14 +1,23 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === 'production';
-
 const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-module.exports = {
-  // Use the Storage URL in production, otherwise use relative paths
-  assetPrefix: isProd ? process.env.BLOB_URL : undefined,
+  assetPrefix: process.env.NODE_ENV === 'production' 
+    ? process.env.BLOB_URL
+    : undefined,
+    
+  // Optional: If you use the <Image /> component, you must whitelist the domain
+  images: {
+    domains: [process.env.BLOB_URL!],
+    // Or use remotePatterns for better security
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: process.env.BLOB_URL!,
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
