@@ -5,10 +5,7 @@ const nextConfig: NextConfig = {
     ? process.env.BLOB_URL
     : undefined,
     
-  // Optional: If you use the <Image /> component, you must whitelist the domain
   images: {
-    domains: [process.env.BLOB_URL!],
-    // Or use remotePatterns for better security
     remotePatterns: [
       {
         protocol: 'https',
