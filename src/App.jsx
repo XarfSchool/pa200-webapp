@@ -15,7 +15,8 @@ function App() {
   useEffect(() => { fetchTodos(); }, []);
 
   const fetchTodos = async () => {
-    setTodos(await pool.query('SELECT * FROM todos ORDER BY created_at DESC'));
+    const result = await pool.query('SELECT * FROM todos ORDER BY created_at DESC');
+    setTodos(result);
   };
 
   const addTodo = async (e) => {
