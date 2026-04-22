@@ -3,10 +3,8 @@
 import { Pool } from 'pg';
 // import { revalidatePath } from 'next/cache'
 
-const DATABASE_URL='postgresql://hw02postgresql:Popelnice123@hw02postgresql.postgres.database.azure.com:5432/postgres';
-
 const pool = new Pool({
-  connectionString: DATABASE_URL,
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
