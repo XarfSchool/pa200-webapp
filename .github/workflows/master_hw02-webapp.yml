@@ -24,6 +24,8 @@ jobs:
           node-version: '22.x'
 
       - name: npm install, build, and test
+        env:
+          BLOB_URL: ${{ secrets.BLOB_URL }}
         run: |
           npm install
           npm run build
