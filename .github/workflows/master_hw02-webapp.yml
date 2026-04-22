@@ -28,6 +28,22 @@ jobs:
           npm install
           npm run build
 
+      - name: Upload Static Assets to Azure
+        uses: azure/CLI@v2
+        with:
+          inlineScript: |
+            az storage blob upload-batch \
+              --connection-string "${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}" \
+              --destination '$web' \
+              --source ./public \
+              --overwrite
+
+            az storage blob upload-batch \
+              --connection-string "${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}" \
+              --destination '$web/_next/static' \
+              --source ./.next/static \
+              --overwrite
+
       - name: Zip artifact for deployment
         run: zip next.zip ./* .next -qr
 
