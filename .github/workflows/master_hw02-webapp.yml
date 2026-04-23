@@ -30,7 +30,7 @@ jobs:
           npm install
           npm run build
 
-      - name: Upload Static Assets to Azure
+      - name: Upload static assets to Azure
         uses: azure/CLI@v2
         with:
           inlineScript: |
